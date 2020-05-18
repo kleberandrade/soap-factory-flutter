@@ -11,9 +11,10 @@ dependencies:
 
   cupertino_icons: ^0.1.2
   firebase_auth: ^0.16.0
-
+  liquid_progress_indicator: ^0.3.2
   google_sign_in: ^4.4.4
-  
+  simple_animations: ^2.2.1
+
 
 dev_dependencies:
   flutter_test:
