@@ -37,7 +37,7 @@ class CurvePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final white = Paint()..color = Colors.blue;
+    final blue = Paint()..color = Colors.blue;
     final path = Path();
 
     final y1 = sin(value);
@@ -54,7 +54,7 @@ class CurvePainter extends CustomPainter {
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
     path.close();
-    canvas.drawPath(path, white);
+    canvas.drawPath(path, blue);
   }
 
   @override
