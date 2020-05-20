@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_twitter_login/flutter_twitter_login.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:soap_factory/strings/strings.dart';
 
 final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -92,31 +94,19 @@ class _LoginTwitterState extends State<LoginTwitter> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Container(
-      padding:
-          EdgeInsets.only(top: 64.0, bottom: 64.0, left: 16.0, right: 16.0),
-      child: RaisedButton(
-          color: Color.fromRGBO(29, 161, 242, 1.0),
-          child: Row(
-            children: <Widget>[
-              Container(
-                  padding: EdgeInsets.only(
-                      top: 8.0, bottom: 8.0, left: 16.0, right: 32.0),
-                  child: Image.asset(
-                    'assets/images/twitter.png',
-                    height: 25.0,
-                    width: 25.0,
-                  )),
-              Expanded(
-                child: Text(
-                  Strings.twitterText,
-                  style: TextStyle(color: Colors.white),
-                ),
-              )
-            ],
+    return FlatButton.icon(
+        textColor: Colors.white,
+        color: Color.fromRGBO(3, 40, 120, 1.0),
+        icon: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+          child: FaIcon(FontAwesomeIcons.twitter),
+        ),
+        label: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+          child: Text(
+            "Login with Twitter",
           ),
-          onPressed: _handleTwitterSignIn),
-    ));
+        ),
+        onPressed: _handleTwitterSignIn);
   }
 }
