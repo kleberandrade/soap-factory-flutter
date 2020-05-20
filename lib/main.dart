@@ -80,19 +80,15 @@ class _State extends State<SplashScreen> {
             ),
           ),
           AnimatedWave(height: 150, speed: 0.7, offset: 3.14),
-          AnimatedContainer(
+          AnimatedCrossFade(
             duration: Duration(seconds: 1),
-            margin: EdgeInsets.all(0),
-            decoration: BoxDecoration(
+            firstChild: Container(
               color: Colors.blue,
             ),
-            child: !splash
-                ? Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 40, horizontal: 10),
-                    child: LoginPage(),
-                  )
-                : Container(),
+            secondChild: Container(
+                width: double.infinity, color: Colors.blue, child: LoginPage()),
+            crossFadeState:
+                !splash ? CrossFadeState.showSecond : CrossFadeState.showFirst,
           )
         ],
       ),

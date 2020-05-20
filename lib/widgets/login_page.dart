@@ -15,6 +15,8 @@ class _LoginPageState extends State<LoginPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         LoginTwitter(),
+        LoginTwitter(),
+        LoginTwitter(),
       ],
     );
   }
