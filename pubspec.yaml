@@ -16,6 +16,8 @@ dependencies:
   simple_animations: ^2.2.1
   flutter_twitter_login: ^1.1.0
   font_awesome_flutter: ^8.8.1
+  toast: ^0.1.5
+
 
 dev_dependencies:
   flutter_test:

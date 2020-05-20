@@ -7,6 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_twitter_login/flutter_twitter_login.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:soap_factory/strings/strings.dart';
+import 'package:toast/toast.dart';
 
 final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
@@ -58,20 +59,20 @@ class _LoginTwitterState extends State<LoginTwitter> {
     _currentUser =
         (await _firebaseAuth.signInWithCredential(_authCredential)).user;
 
-    setState(() {
-      if (_twitterLoginStatus == TwitterLoginStatus.loggedIn &&
-          _currentUser != null) {
-        _loggedInMessage = '$snackBarMessage ${_currentUser.displayName}';
-      } else {
-        _loggedInMessage = _loggedInMessage = '$snackBarMessage';
-      }
-    });
+    if (_currentUser.displayName != null) {
+      snackBarMessage += " ${_currentUser.displayName}";
+    }
+
+    showToast(snackBarMessage, duration: 10, gravity: 5);
+  }
+
+  void showToast(String msg, {int duration, int gravity}) {
+    Toast.show(msg, context, duration: duration, gravity: gravity);
   }
 
   void _checkCurrentUser() async {
     _currentUser = await _firebaseAuth.currentUser();
     _currentUser?.getIdToken(refresh: true);
-    print(_currentUser);
 
     _listener = _firebaseAuth.onAuthStateChanged.listen((FirebaseUser user) {
       setState(() {
