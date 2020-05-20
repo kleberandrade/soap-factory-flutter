@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:soap_factory/animated/bubbles_animated.dart';
 
+import 'package:soap_factory/animated/bubbles_animated.dart';
 import 'package:soap_factory/animated/wave_animated.dart';
+import 'package:soap_factory/widgets/login_twitter.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -71,6 +72,7 @@ class _State extends State<SplashScreen> {
             height: height,
             child: Container(
               color: Colors.blue,
+              child: LoginTwitter(),
             ),
           ),
         ],
