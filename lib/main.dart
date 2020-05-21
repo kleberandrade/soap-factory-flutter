@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
+import 'package:soap_factory/stores/passwordrecovery/password_recovery_store.dart';
 
-import 'package:soap_factory/animated/bubbles_animated.dart';
-import 'package:soap_factory/animated/wave_animated.dart';
-import 'package:soap_factory/widgets/login_page.dart';
+import 'animated/bubbles_animated.dart';
+import 'animated/wave_animated.dart';
+import 'widgets/login_page.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(primarySwatch: Colors.blue),
-        home: SplashScreen());
+    return Provider<PasswordRecoveryStore>(
+        create: (_) => PasswordRecoveryStore(),
+        child: MaterialApp(
+            theme: ThemeData(primarySwatch: Colors.blue),
+            title: 'Soap Factory',
+            debugShowCheckedModeBanner: false,
+            home: SplashScreen()));
   }
 }
 
