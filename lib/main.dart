@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/rendering.dart';
+
+import 'package:soap_factory/animated/bubbles_animated.dart';
+import 'package:soap_factory/animated/wave_animated.dart';
+import 'package:soap_factory/widgets/login_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -6,57 +12,85 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(primarySwatch: Colors.blue),
+        home: SplashScreen());
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
+class SplashScreen extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _State createState() => _State();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _State extends State<SplashScreen> {
+  bool splash = true;
+  double height = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 4), () {
+      setState(() {
+        splash = false;
+        height = 450;
+      });
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 50, 16, 0),
+            child: AnimatedOpacity(
+              opacity: splash ? 0 : 1.0,
+              duration: Duration(seconds: 3),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Image.asset(
+                    "assets/images/logo.png",
+                    width: 200,
+                  ),
+                ],
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+          ),
+          Expanded(
+            child: Stack(children: <Widget>[
+              Positioned.fill(child: Bubbles(5)),
+            ]),
+          ),
+          AnimatedOpacity(
+            opacity: splash ? 1.0 : 0.0,
+            duration: Duration(seconds: 2),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Image.asset(
+                  "assets/images/logo.png",
+                  width: splash ? 300 : 0,
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+          ),
+          AnimatedWave(height: 150, speed: 0.7, offset: 3.14),
+          AnimatedCrossFade(
+            duration: Duration(seconds: 1),
+            firstChild: Container(
+              color: Colors.blue,
+            ),
+            secondChild: Container(
+                width: double.infinity, color: Colors.blue, child: LoginPage()),
+            crossFadeState:
+                !splash ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+          )
+        ],
       ),
     );
   }
