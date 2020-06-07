@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:soap_factory/views/password_recovery_view.dart';
+import 'package:soap_factory/widgets/login_google.dart';
 
 import 'login_twitter.dart';
 
@@ -14,7 +15,7 @@ class _LoginPageState extends State<LoginPage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: [LoginTwitter(), PasswordRecoveryView()],
+      children: [LoginTwitter(), LoginGoogle(), PasswordRecoveryView()],
     );
   }
 }
