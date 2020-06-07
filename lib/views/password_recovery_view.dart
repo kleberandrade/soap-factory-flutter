@@ -21,83 +21,76 @@ class _PasswordRecoveryViewState extends State<PasswordRecoveryView> {
   @override
   Widget build(BuildContext context) {
     print(passwordRecoveryStore);
-    return SafeArea(
-      child: Scaffold(
-        key: _scaffoldKey,
-        backgroundColor: Colors.white,
-        body: Form(
-          key: _formKey,
-          child: Container(
-            color: Colors.white,
-            margin: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: const Text(
-                    'Forgot your password?',
-                    textAlign: TextAlign.center,
-                    style:
-                        TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
-                  child: const Text(
-                    'Enter your email address and we will send you instructions to reset your password. ',
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(fontWeight: FontWeight.w500),
-                  ),
-                ),
-                const SizedBox(height: 16.0),
-                Observer(builder: (_) {
-                  return InputField(
-                    hint: 'E-mail',
-                    suffixIcon: Icon(Icons.email),
-                    keyboardType: TextInputType.emailAddress,
-                    labelText: 'E-mail',
-                    onChanged: passwordRecoveryStore.setEmail,
-                    validateText: (email) {
-                      if (email.isEmpty ||
-                          !email.contains(RegExp(
-                              r"^(([^<>()[\]\\.,;:\s@\']+(\.[^<>()[\]\\.,;:\s@\']+)*)|(\'.+\'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$")))
-                        return 'E-mail inválido!';
-                      return null;
-                    },
-                  );
-                }),
-                const SizedBox(height: 16),
-                Container(
-                  height: 50,
-                  child: RaisedButton(
-                    color: Colors.blueGrey,
-                    onPressed: () {
-                      if (_formKey.currentState.validate())
-                        passwordRecoveryStore.sendPasswordRecovery(
-                            passwordRecoveryStore.userEmail, _onSuccess,
-                            (errorMessage) {
-                          _onError(errorMessage);
-                          return null;
-                        });
-                    },
-                    child: Text(
-                      'Send',
-                      style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white),
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                  ),
-                ),
-              ],
+    return Form(
+      key: _formKey,
+      child: Container(
+        color: Colors.white,
+        margin: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: const Text(
+                'Forgot your password?',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
+            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.only(top: 16.0),
+              child: const Text(
+                'Enter your email address and we will send you instructions to reset your password. ',
+                textAlign: TextAlign.justify,
+                style: TextStyle(fontWeight: FontWeight.w500),
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            Observer(builder: (_) {
+              return InputField(
+                hint: 'E-mail',
+                suffixIcon: Icon(Icons.email),
+                keyboardType: TextInputType.emailAddress,
+                labelText: 'E-mail',
+                onChanged: passwordRecoveryStore.setEmail,
+                validateText: (email) {
+                  if (email.isEmpty ||
+                      !email.contains(RegExp(
+                          r"^(([^<>()[\]\\.,;:\s@\']+(\.[^<>()[\]\\.,;:\s@\']+)*)|(\'.+\'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$")))
+                    return 'E-mail inválido!';
+                  return null;
+                },
+              );
+            }),
+            const SizedBox(height: 16),
+            Container(
+              height: 50,
+              child: RaisedButton(
+                color: Colors.blueGrey,
+                onPressed: () {
+                  if (_formKey.currentState.validate())
+                    passwordRecoveryStore.sendPasswordRecovery(
+                        passwordRecoveryStore.userEmail, _onSuccess,
+                        (errorMessage) {
+                      _onError(errorMessage);
+                      return null;
+                    });
+                },
+                child: Text(
+                  'Send',
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white),
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -88,8 +88,7 @@ class _State extends State<SplashScreen> {
             firstChild: Container(
               color: Colors.blue,
             ),
-            secondChild: Container(
-                width: double.infinity, color: Colors.blue, child: LoginPage()),
+            secondChild: Container(color: Colors.blue, child: LoginPage()),
             crossFadeState:
                 !splash ? CrossFadeState.showSecond : CrossFadeState.showFirst,
           )
