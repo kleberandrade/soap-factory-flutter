@@ -98,14 +98,14 @@ class _LoginGoogleState extends State<LoginGoogle> {
   @override
   Widget build(BuildContext context) {
     return FlatButton.icon(
-      color: Colors.red,
+      color: Color(0xFFCA4534),
       textColor: Colors.white,
       icon: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         child: FaIcon(FontAwesomeIcons.google),
       ),
       label: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         child: Text(
           "Login with Google",
         ),
