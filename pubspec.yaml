@@ -8,22 +8,29 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  mobx: ^1.2.0
+  flutter_mobx: ^1.1.0
 
   cupertino_icons: ^0.1.2
   firebase_auth: ^0.16.0
-
+  liquid_progress_indicator: ^0.3.2
   google_sign_in: ^4.4.4
-  flutter_auth_buttons: ^0.8.0
+  simple_animations: ^2.2.1
+  flutter_twitter_login: ^1.1.0
   font_awesome_flutter: ^8.8.1
+  toast: ^0.1.5
+  flutter_auth_buttons: ^0.8.0
+  provider: ^4.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mobx_codegen: ^1.1.0
+  build_runner: ^1.10.0
 
 flutter:
 
   uses-material-design: true
 
   assets:
-    - assets/google_logo.png
-    - assets/logo.png 
+    - assets/images/
