@@ -99,11 +99,11 @@ class _LoginTwitterState extends State<LoginTwitter> {
         textColor: Colors.white,
         color: Color.fromRGBO(3, 40, 120, 1.0),
         icon: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           child: FaIcon(FontAwesomeIcons.twitter),
         ),
         label: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           child: Text(
             "Login with Twitter",
           ),
