@@ -14,9 +14,7 @@ class InputWhite extends StatelessWidget {
   final Widget prefixIcon;
   final Widget sufixIcon;
   final Function onChanged;
-  final String initialValue;
   final TextEditingController controller;
-  final EdgeInsets padding;
   final bool enabled;
 
   const InputWhite(
@@ -31,15 +29,31 @@ class InputWhite extends StatelessWidget {
       this.onSaved,
       this.keyboardType,
       this.prefixIcon,
-      this.sufixIcon,
       this.onChanged,
-      this.initialValue,
       this.controller,
-      this.padding = const EdgeInsets.all(4)})
+      this.sufixIcon})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return InputDefault();
+    return TextFormField(
+      cursorColor: Colors.white,
+      decoration: InputDecoration(
+        prefixIcon: this.prefixIcon,
+        prefixStyle: TextStyle(
+            color: Colors.white,
+            decorationColor: Colors.white,
+            backgroundColor: Colors.white),
+        labelStyle:
+            TextStyle(color: Colors.white, decorationColor: Colors.white),
+        fillColor: Colors.white,
+        hintStyle: TextStyle(color: Colors.white),
+        labelText: this.labelText,
+        focusColor: Colors.white,
+        hoverColor: Colors.white,
+        focusedBorder:
+            UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+      ),
+    );
   }
 }

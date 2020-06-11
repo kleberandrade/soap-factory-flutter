@@ -5,6 +5,7 @@ import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:soap_factory/app/modules/login/controllers/password_recovery/password_recovery_store.dart';
 import 'package:soap_factory/app/modules/login/widgets/email_form_field.dart';
+import 'package:soap_factory/app/modules/login/widgets/input_white.dart';
 
 class PasswordRecoveryView extends StatefulWidget {
   @override
@@ -30,22 +31,11 @@ class _PasswordRecoveryViewState extends State<PasswordRecoveryView> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             child: Observer(builder: (_) {
-              return TextFormField(
-                cursorColor: Colors.white,
-                decoration: InputDecoration(
-                  icon: Icon(
-                    Icons.email,
-                    color: Colors.white,
-                  ),
-                  labelStyle: TextStyle(
-                      color: Colors.white, decorationColor: Colors.white),
-                  fillColor: Colors.white,
-                  hintStyle: TextStyle(color: Colors.white),
-                  labelText: 'E-mail',
-                  focusColor: Colors.white,
-                  hoverColor: Colors.white,
-                  focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white)),
+              return InputWhite(
+                labelText: "E-mail",
+                prefixIcon: Icon(
+                  Icons.email,
+                  color: Colors.white,
                 ),
               );
             }),
