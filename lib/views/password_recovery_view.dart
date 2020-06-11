@@ -24,7 +24,6 @@ class _PasswordRecoveryViewState extends State<PasswordRecoveryView> {
     return Form(
       key: _formKey,
       child: Container(
-        color: Colors.white,
         margin: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +34,10 @@ class _PasswordRecoveryViewState extends State<PasswordRecoveryView> {
               child: const Text(
                 'Forgot your password?',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             const SizedBox(height: 16),
@@ -43,8 +45,10 @@ class _PasswordRecoveryViewState extends State<PasswordRecoveryView> {
               padding: const EdgeInsets.only(top: 16.0),
               child: const Text(
                 'Enter your email address and we will send you instructions to reset your password. ',
-                textAlign: TextAlign.justify,
-                style: TextStyle(fontWeight: FontWeight.w500),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
             const SizedBox(height: 16.0),
@@ -68,7 +72,7 @@ class _PasswordRecoveryViewState extends State<PasswordRecoveryView> {
             Container(
               height: 50,
               child: RaisedButton(
-                color: Colors.blueGrey,
+                color: Colors.blue,
                 onPressed: () {
                   if (_formKey.currentState.validate())
                     passwordRecoveryStore.sendPasswordRecovery(
@@ -79,13 +83,14 @@ class _PasswordRecoveryViewState extends State<PasswordRecoveryView> {
                     });
                 },
                 child: Text(
-                  'Send',
+                  'Continue',
                   style: TextStyle(
                       fontSize: 16.0,
                       fontWeight: FontWeight.w600,
                       color: Colors.white),
                 ),
                 shape: RoundedRectangleBorder(
+                  side: BorderSide(color: Colors.white),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
