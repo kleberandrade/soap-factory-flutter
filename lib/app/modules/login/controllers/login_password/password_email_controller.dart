@@ -1,12 +1,12 @@
 import 'package:mobx/mobx.dart';
-import 'package:soap_factory/repository/email_login.dart';
+import 'package:soap_factory/app/modules/login/repositories/email_login.dart';
 
-part 'password_email_store.g.dart';
+part 'password_email_controller.g.dart';
 
-class PasswordEmailStore = _PasswordEmailBase with _$PasswordEmailStore;
+class PasswordEmailController = _PasswordEmailBase with _$PasswordEmail;
 
 abstract class _PasswordEmailBase with Store {
-AccountRepository _repository;
+  AccountRepository _repository;
 
   _AccountControllerBase() {
     _repository = new AccountRepository();
@@ -22,16 +22,14 @@ AccountRepository _repository;
   String userEmail = '';
 
   @computed
-  bool get isEmailValid => RegExp(
-          r'^[a-zA-Z0-9-_.]+@[a-zA-Z0-9]+\.[a-zA-Z]+')
-      .hasMatch(userEmail);
+  bool get isEmailValid =>
+      RegExp(r'^[a-zA-Z0-9-_.]+@[a-zA-Z0-9]+\.[a-zA-Z]+').hasMatch(userEmail);
 
   @observable
   String userPassword = '';
 
   @computed
-  bool get isPasswordValid => RegExp(
-    r'^.{6,}$').hasMatch(userPassword);
+  bool get isPasswordValid => RegExp(r'^.{6,}$').hasMatch(userPassword);
 
   @action
   void setBusy(bool value) => busy = value;
@@ -80,7 +78,7 @@ AccountRepository _repository;
   }
 
   @action
-  Future signOut() async{
+  Future signOut() async {
     await _repository.signOut();
   }
 }

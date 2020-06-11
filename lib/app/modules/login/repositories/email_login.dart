@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:soap_factory/models/userModel.dart';
+import 'package:soap_factory/app/modules/login/models/user_model.dart';
 
 class AccountRepository {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -12,7 +12,7 @@ class AccountRepository {
       AuthResult result = await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
       return result.user;
-    } catch(e){
+    } catch (e) {
       return Future.error(e);
     }
   }
@@ -28,11 +28,10 @@ class AccountRepository {
       await createUserData(user: result.user, name: name);
 
       return result.user;
-    } catch(e){
+    } catch (e) {
       return Future.error(e);
     }
-    }
-  
+  }
 
   Future createUserData({FirebaseUser user, String name}) async {
     final userModel = UserModel(
@@ -50,7 +49,7 @@ class AccountRepository {
   Future<void> sendPasswordResetEmail({String email}) async {
     try {
       await _firebaseAuth.sendPasswordResetEmail(email: email);
-    } catch(e){
+    } catch (e) {
       return Future.error(e);
     }
   }

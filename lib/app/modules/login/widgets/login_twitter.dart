@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_twitter_login/flutter_twitter_login.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:soap_factory/strings/strings.dart';
+import 'package:soap_factory/app/shared/helpers/consts.dart';
 import 'package:toast/toast.dart';
 
 final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -31,8 +31,8 @@ class _LoginTwitterState extends State<LoginTwitter> {
     String snackBarMessage = '';
 
     final TwitterLogin twitterLogin = new TwitterLogin(
-        consumerKey: Strings.twitterApiKey,
-        consumerSecret: Strings.twitterApiSecret);
+        consumerKey: Consts.twitterApiKey,
+        consumerSecret: Consts.twitterApiSecret);
 
     _twitterLoginResult = await twitterLogin.authorize();
     _currentUserTwitterSession = _twitterLoginResult.session;

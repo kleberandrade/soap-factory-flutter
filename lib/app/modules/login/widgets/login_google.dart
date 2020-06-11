@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_twitter_login/flutter_twitter_login.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:soap_factory/pages/first_screen.dart';
-import 'package:soap_factory/repository/google_login.dart';
-import 'package:soap_factory/strings/strings.dart';
+import 'package:soap_factory/app/modules/home/pages/home_page.dart';
+import 'package:soap_factory/app/modules/login/repositories/google_login.dart';
+
 import 'package:toast/toast.dart';
 
 class LoginGoogle extends StatefulWidget {
