@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:soap_factory/stores/passwordrecovery/password_recovery_store.dart';
+import 'package:soap_factory/app/modules/login/animated/bubbles_animated.dart';
+import 'package:soap_factory/app/modules/login/animated/wave_animated.dart';
+import 'package:soap_factory/app/modules/login/controllers/password_recovery/password_recovery_store.dart';
 
-import 'animated/bubbles_animated.dart';
-import 'animated/wave_animated.dart';
-import 'widgets/login_page.dart';
+import 'app/modules/login/widgets/login_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -57,7 +57,7 @@ class _State extends State<SplashScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Image.asset(
-                    "assets/images/logo.png",
+                    "lib/assets/images/logo.png",
                     width: 200,
                   ),
                 ],
@@ -76,7 +76,7 @@ class _State extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Image.asset(
-                  "assets/images/logo.png",
+                  "lib/assets/images/logo.png",
                   width: splash ? 300 : 0,
                 ),
               ],
