@@ -4,7 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:soap_factory/app/modules/login/controllers/password_recovery/password_recovery_store.dart';
-import 'package:soap_factory/app/modules/login/widgets/email_form_field.dart';
+import 'package:soap_factory/app/modules/login/widgets/button_white.dart';
 import 'package:soap_factory/app/modules/login/widgets/input_white.dart';
 
 class PasswordRecoveryView extends StatefulWidget {
@@ -18,6 +18,15 @@ class _PasswordRecoveryViewState extends State<PasswordRecoveryView> {
   final _formKey = GlobalKey<FormState>();
   PasswordRecoveryStore passwordRecoveryStore;
   ReactionDisposer reactionDisposer;
+
+  void sendForgetPassword() {
+    if (_formKey.currentState.validate())
+      passwordRecoveryStore.sendPasswordRecovery(
+          passwordRecoveryStore.userEmail, _onSuccess, (errorMessage) {
+        _onError(errorMessage);
+        return null;
+      });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,29 +50,7 @@ class _PasswordRecoveryViewState extends State<PasswordRecoveryView> {
             }),
           ),
           const SizedBox(height: 16),
-          RaisedButton(
-            color: Colors.blue,
-            onPressed: () {
-              if (_formKey.currentState.validate())
-                passwordRecoveryStore.sendPasswordRecovery(
-                    passwordRecoveryStore.userEmail, _onSuccess,
-                    (errorMessage) {
-                  _onError(errorMessage);
-                  return null;
-                });
-            },
-            child: Text(
-              'Continue',
-              style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white),
-            ),
-            shape: RoundedRectangleBorder(
-              side: BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-          ),
+          ButtonWhite(() => sendForgetPassword(), "Continue")
         ],
       ),
     );

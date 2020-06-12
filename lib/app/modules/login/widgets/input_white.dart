@@ -37,15 +37,13 @@ class InputWhite extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      cursorColor: Colors.white,
+      obscureText: this.isPassword,
+      cursorColor: Colors.white10,
       decoration: InputDecoration(
+        suffixIcon: this.sufixIcon,
         prefixIcon: this.prefixIcon,
-        prefixStyle: TextStyle(
-            color: Colors.white,
-            decorationColor: Colors.white,
-            backgroundColor: Colors.white),
         labelStyle:
-            TextStyle(color: Colors.white, decorationColor: Colors.white),
+            TextStyle(color: Colors.grey[300], decorationColor: Colors.white70),
         fillColor: Colors.white,
         hintStyle: TextStyle(color: Colors.white),
         labelText: this.labelText,
