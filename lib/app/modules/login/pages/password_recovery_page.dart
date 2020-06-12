@@ -4,7 +4,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:soap_factory/app/modules/login/controllers/password_recovery/password_recovery_store.dart';
-import 'package:soap_factory/app/modules/login/widgets/email_form_field.dart';
+import 'package:soap_factory/app/modules/login/widgets/button_white.dart';
+import 'package:soap_factory/app/modules/login/widgets/input_white.dart';
 
 class PasswordRecoveryView extends StatefulWidget {
   @override
@@ -18,6 +19,15 @@ class _PasswordRecoveryViewState extends State<PasswordRecoveryView> {
   PasswordRecoveryStore passwordRecoveryStore;
   ReactionDisposer reactionDisposer;
 
+  void sendForgetPassword() {
+    if (_formKey.currentState.validate())
+      passwordRecoveryStore.sendPasswordRecovery(
+          passwordRecoveryStore.userEmail, _onSuccess, (errorMessage) {
+        _onError(errorMessage);
+        return null;
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
     print(passwordRecoveryStore);
@@ -30,50 +40,17 @@ class _PasswordRecoveryViewState extends State<PasswordRecoveryView> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             child: Observer(builder: (_) {
-              return TextFormField(
-                cursorColor: Colors.white,
-                decoration: InputDecoration(
-                  icon: Icon(
-                    Icons.email,
-                    color: Colors.white,
-                  ),
-                  labelStyle: TextStyle(
-                      color: Colors.white, decorationColor: Colors.white),
-                  fillColor: Colors.white,
-                  hintStyle: TextStyle(color: Colors.white),
-                  labelText: 'E-mail',
-                  focusColor: Colors.white,
-                  hoverColor: Colors.white,
-                  focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white)),
+              return InputWhite(
+                labelText: "E-mail",
+                prefixIcon: Icon(
+                  Icons.email,
+                  color: Colors.white,
                 ),
               );
             }),
           ),
           const SizedBox(height: 16),
-          RaisedButton(
-            color: Colors.blue,
-            onPressed: () {
-              if (_formKey.currentState.validate())
-                passwordRecoveryStore.sendPasswordRecovery(
-                    passwordRecoveryStore.userEmail, _onSuccess,
-                    (errorMessage) {
-                  _onError(errorMessage);
-                  return null;
-                });
-            },
-            child: Text(
-              'Continue',
-              style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white),
-            ),
-            shape: RoundedRectangleBorder(
-              side: BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-          ),
+          ButtonWhite(() => sendForgetPassword(), "Continue")
         ],
       ),
     );

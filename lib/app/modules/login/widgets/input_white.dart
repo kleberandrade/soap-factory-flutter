@@ -14,9 +14,7 @@ class InputWhite extends StatelessWidget {
   final Widget prefixIcon;
   final Widget sufixIcon;
   final Function onChanged;
-  final String initialValue;
   final TextEditingController controller;
-  final EdgeInsets padding;
   final bool enabled;
 
   const InputWhite(
@@ -31,15 +29,29 @@ class InputWhite extends StatelessWidget {
       this.onSaved,
       this.keyboardType,
       this.prefixIcon,
-      this.sufixIcon,
       this.onChanged,
-      this.initialValue,
       this.controller,
-      this.padding = const EdgeInsets.all(4)})
+      this.sufixIcon})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return InputDefault();
+    return TextFormField(
+      obscureText: this.isPassword,
+      cursorColor: Colors.white10,
+      decoration: InputDecoration(
+        suffixIcon: this.sufixIcon,
+        prefixIcon: this.prefixIcon,
+        labelStyle:
+            TextStyle(color: Colors.grey[300], decorationColor: Colors.white70),
+        fillColor: Colors.white,
+        hintStyle: TextStyle(color: Colors.white),
+        labelText: this.labelText,
+        focusColor: Colors.white,
+        hoverColor: Colors.white,
+        focusedBorder:
+            UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+      ),
+    );
   }
 }
