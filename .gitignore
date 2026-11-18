@@ -32,7 +32,19 @@
 **/android/app/google-services.json
 
 # Web related
-lib/generated_plugin_registrant.dart
 
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+# Local host and signing files
+android/local.properties
+android/key.properties
+*.jks
+*.keystore
+ios/Flutter/ephemeral/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Pods/
+ios/.symlinks/
+
+coverage/
